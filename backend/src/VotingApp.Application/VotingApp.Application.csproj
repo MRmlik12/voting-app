@@ -6,4 +6,14 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="6.3.0" />
+    <PackageReference Include="MediatR" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\VotingApp.Core\VotingApp.Core.csproj" />
+    <ProjectReference Include="..\VotingApp.Infrastructure\VotingApp.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
