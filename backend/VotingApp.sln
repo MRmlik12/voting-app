@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{82577216-8D0B-42B5-B720-2FC91C1809E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VotingApp.Api", "src\VotingApp.Api\VotingApp.Api.csproj", "{11F0CFB9-3676-4FA7-ABAB-D8544EDD20B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VotingApp.Core", "src\VotingApp.Core\VotingApp.Core.csproj", "{3645861C-9259-4C66-9BD6-829006986FF2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VotingApp.Infrastructure", "src\VotingApp.Infrastructure\VotingApp.Infrastructure.csproj", "{F3A87418-F021-4AB5-B44F-0453E33664DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VotingApp.Application", "src\VotingApp.Application\VotingApp.Application.csproj", "{899C3E11-09C6-4E96-9EC2-0B74CFF54226}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{7A1DE2A3-9774-434B-A810-AB780A2E8EF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VotingApp.IntegrationTests", "test\VotingApp.IntegrationTests\VotingApp.IntegrationTests.csproj", "{A6FDF376-B31B-49D1-9C44-449EFA21E12A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VotingApp.UnitTests", "test\VotingApp.UnitTests\VotingApp.UnitTests.csproj", "{7099E984-EEE2-4136-8755-A32DE3660A28}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{11F0CFB9-3676-4FA7-ABAB-D8544EDD20B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11F0CFB9-3676-4FA7-ABAB-D8544EDD20B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11F0CFB9-3676-4FA7-ABAB-D8544EDD20B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11F0CFB9-3676-4FA7-ABAB-D8544EDD20B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3645861C-9259-4C66-9BD6-829006986FF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3645861C-9259-4C66-9BD6-829006986FF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3645861C-9259-4C66-9BD6-829006986FF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3645861C-9259-4C66-9BD6-829006986FF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3A87418-F021-4AB5-B44F-0453E33664DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3A87418-F021-4AB5-B44F-0453E33664DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3A87418-F021-4AB5-B44F-0453E33664DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3A87418-F021-4AB5-B44F-0453E33664DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{899C3E11-09C6-4E96-9EC2-0B74CFF54226}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{899C3E11-09C6-4E96-9EC2-0B74CFF54226}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{899C3E11-09C6-4E96-9EC2-0B74CFF54226}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{899C3E11-09C6-4E96-9EC2-0B74CFF54226}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6FDF376-B31B-49D1-9C44-449EFA21E12A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6FDF376-B31B-49D1-9C44-449EFA21E12A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6FDF376-B31B-49D1-9C44-449EFA21E12A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6FDF376-B31B-49D1-9C44-449EFA21E12A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7099E984-EEE2-4136-8755-A32DE3660A28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7099E984-EEE2-4136-8755-A32DE3660A28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7099E984-EEE2-4136-8755-A32DE3660A28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7099E984-EEE2-4136-8755-A32DE3660A28}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{11F0CFB9-3676-4FA7-ABAB-D8544EDD20B3} = {82577216-8D0B-42B5-B720-2FC91C1809E7}
+		{3645861C-9259-4C66-9BD6-829006986FF2} = {82577216-8D0B-42B5-B720-2FC91C1809E7}
+		{F3A87418-F021-4AB5-B44F-0453E33664DE} = {82577216-8D0B-42B5-B720-2FC91C1809E7}
+		{899C3E11-09C6-4E96-9EC2-0B74CFF54226} = {82577216-8D0B-42B5-B720-2FC91C1809E7}
+		{A6FDF376-B31B-49D1-9C44-449EFA21E12A} = {7A1DE2A3-9774-434B-A810-AB780A2E8EF7}
+		{7099E984-EEE2-4136-8755-A32DE3660A28} = {7A1DE2A3-9774-434B-A810-AB780A2E8EF7}
+	EndGlobalSection
+EndGlobal
