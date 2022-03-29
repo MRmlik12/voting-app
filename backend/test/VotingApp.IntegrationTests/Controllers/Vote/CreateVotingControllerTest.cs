@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Drawing;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -9,8 +10,17 @@ using Xunit;
 
 namespace VotingApp.IntegrationTests.Controllers.Vote;
 
+[Collection("Voting collection")]
 public class CreateVotingControllerTest
 {
+    private const int CodeLenght = 10;
+    private readonly VoteFixture _voteFixture;
+    
+    public CreateVotingControllerTest(VoteFixture voteFixture)
+    {
+        _voteFixture = voteFixture;
+    }
+    
     [Fact]
     public async void CreateVoting_200_OK()
     {
@@ -30,6 +40,10 @@ public class CreateVotingControllerTest
         var httpContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
         using var response = await client.PostAsync("/vote/CreateVoting", httpContent);
         
+        var code = await response.Content.ReadAsStringAsync();
+        _voteFixture.Code = code;
+        
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        Assert.Equal(CodeLenght, code.Length);
     }
 }
