@@ -1,9 +1,9 @@
 using VotingApp.Core.ProjectAggregate.Vote;
 
-namespace VotingApp.Infrastructure.Redis.Infrastructure;
+namespace VotingApp.Infrastructure.Redis.Interfaces;
 
 public interface IVoteRepository
 {
-    Task Create(string code, VoteModel vote);
-    Task<VoteModel?> GetVoteModel(string code);
+    Task UpdateOrCreate(string code, Vote vote);
+    Task<Vote?> GetVoteModel(string code);
 }

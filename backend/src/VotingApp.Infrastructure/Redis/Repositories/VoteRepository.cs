@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
 using StackExchange.Redis;
 using VotingApp.Core.ProjectAggregate.Vote;
-using VotingApp.Infrastructure.Redis.Infrastructure;
+using VotingApp.Infrastructure.Redis.Interfaces;
 
 namespace VotingApp.Infrastructure.Redis.Repositories;
 
@@ -14,12 +14,12 @@ public class VoteRepository : IVoteRepository
         Votes = context.Votes;
     }
 
-    public async Task Create(string code, VoteModel vote)
+    public async Task UpdateOrCreate(string code, Vote vote)
     {
         await Votes.StringSetAsync(code, JsonConvert.SerializeObject(vote));
     }
 
-    public async Task<VoteModel?> GetVoteModel(string code)
+    public async Task<Vote?> GetVoteModel(string code)
     {
         try
         {
@@ -27,7 +27,7 @@ public class VoteRepository : IVoteRepository
 
             return voting.ToString() == null
                 ? null
-                : JsonConvert.DeserializeObject<VoteModel>(voting.ToString());
+                : JsonConvert.DeserializeObject<Vote>(voting.ToString());
         }
         catch (JsonException)
         {

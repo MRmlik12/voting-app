@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using VotingApp.Core.Models;
 using VotingApp.Core.Models.Response;
-using VotingApp.Infrastructure.Redis.Infrastructure;
+using VotingApp.Infrastructure.Redis.Interfaces;
 
 namespace VotingApp.Application.Vote.JoinVoting;
 

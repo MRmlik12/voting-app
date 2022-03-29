@@ -1,5 +1,5 @@
 using Autofac;
-using VotingApp.Infrastructure.Redis.Infrastructure;
+using VotingApp.Infrastructure.Redis.Interfaces;
 using VotingApp.Infrastructure.Redis.Repositories;
 using Module = Autofac.Module;
 
