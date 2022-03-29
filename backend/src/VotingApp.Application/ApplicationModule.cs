@@ -2,13 +2,19 @@ using System.Reflection;
 using Autofac;
 using MediatR;
 using MediatR.Pipeline;
+using VotingApp.Application.Vote.CreateVoting;
 using Module = Autofac.Module;
 
 namespace VotingApp.Application;
 
 public class ApplicationModule : Module
 {
-    private readonly List<Assembly>? _assemblies = new();
+    private readonly List<Assembly?> _assemblies = new();
+
+    public ApplicationModule()
+    {
+        _assemblies.Add(Assembly.GetAssembly(typeof(CreateVotingRequestHandler)));
+    }
 
     protected override void Load(ContainerBuilder builder)
     {
