@@ -1,0 +1,19 @@
+using Autofac;
+using VotingApp.Infrastructure.Redis.Infrastructure;
+using VotingApp.Infrastructure.Redis.Infrastructure.Repositories;
+using Module = Autofac.Module;
+
+namespace VotingApp.Infrastructure.Redis;
+
+public class RedisModule : Module
+{
+    protected override void Load(ContainerBuilder builder)
+    {
+        builder.RegisterType<RedisContext>()
+            .InstancePerLifetimeScope();
+
+        builder.RegisterType<VoteRepository>()
+            .As<IVoteRepository>()
+            .InstancePerLifetimeScope();
+    }
+}
