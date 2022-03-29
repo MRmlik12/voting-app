@@ -5,5 +5,5 @@ namespace VotingApp.Core.Utils;
 public static class GenerateCodeUtil
 {
     public static string Generate()
-        => new Randomizer().Chars().ToString()!;
+        => new(new Randomizer().Chars('a', 'z', 10));
 }
