@@ -9,7 +9,7 @@ namespace VotingApp.Api.Controllers.Vote;
 public class JoinVotingController : ControllerBase
 {
     private readonly IMediator _mediator;
-    
+
     public JoinVotingController(IMediator mediator)
     {
         _mediator = mediator;

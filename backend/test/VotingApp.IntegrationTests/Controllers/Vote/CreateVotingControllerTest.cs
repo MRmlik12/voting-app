@@ -15,12 +15,12 @@ public class CreateVotingControllerTest
 {
     private const int CodeLenght = 10;
     private readonly VoteFixture _voteFixture;
-    
+
     public CreateVotingControllerTest(VoteFixture voteFixture)
     {
         _voteFixture = voteFixture;
     }
-    
+
     [Fact]
     public async void CreateVoting_200_OK()
     {
@@ -34,16 +34,17 @@ public class CreateVotingControllerTest
                 { "Cherry", "Mango" }
             }
         };
-        
+
         await using var application = new WebServerFactory();
         using var client = application.CreateClient();
         var httpContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
         using var response = await client.PostAsync("/vote/CreateVoting", httpContent);
-        
-        var responseModel = JsonConvert.DeserializeObject<CreateVotingResponseModel>(await response.Content.ReadAsStringAsync());
-        _voteFixture.Code = responseModel!.Code;
-        
+
+        var responseModel =
+            JsonConvert.DeserializeObject<CreateVotingResponseModel>(await response.Content.ReadAsStringAsync());
+        _voteFixture.Code = responseModel!.Code!;
+
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-        Assert.Equal(CodeLenght, responseModel.Code.Length);
+        Assert.Equal(CodeLenght, responseModel.Code!.Length);
     }
 }

@@ -4,7 +4,7 @@ using Bogus;
 
 namespace VotingApp.Core.Utils;
 
-public static class KeyUtil
+public static class KeyUtils
 {
     public static (string, string) Generate()
     {
@@ -24,5 +24,7 @@ public static class KeyUtil
     }
 
     private static string GetHexHash(byte[] hashBytes)
-        => BitConverter.ToString(hashBytes);
+    {
+        return BitConverter.ToString(hashBytes);
+    }
 }

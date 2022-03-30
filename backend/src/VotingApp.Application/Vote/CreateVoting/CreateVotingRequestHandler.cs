@@ -19,9 +19,9 @@ public class CreateVotingRequestHandler : IRequestHandler<CreateVotingModel, Cre
     public async Task<CreateVotingResponseModel> Handle(CreateVotingModel request, CancellationToken cancellationToken)
     {
         if (request.VotingItems == null) throw new Exception("Voting items is null");
-        
+
         var code = GenerateCodeUtil.Generate();
-        var (key, hash) = GenerateKeyUtil.Generate();
+        var (key, hash) = KeyUtils.Generate();
         var voteModel = new Core.ProjectAggregate.Vote.Vote
         {
             Title = request.Title,

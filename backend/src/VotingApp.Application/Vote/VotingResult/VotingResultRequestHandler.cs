@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using VotingApp.Core.Models;
 using VotingApp.Core.Models.Response;
-using VotingApp.Core.ProjectAggregate.Vote;
+using VotingApp.Core.Utils;
 using VotingApp.Infrastructure.Redis.Interfaces;
 
 namespace VotingApp.Application.Vote.VotingResult;
@@ -9,18 +9,21 @@ namespace VotingApp.Application.Vote.VotingResult;
 public class VotingResultRequestHandler : IRequestHandler<VotingResultModel, VotingResultResponseModel>
 {
     private readonly IVoteRepository _voteRepository;
-    
+
     public VotingResultRequestHandler(IVoteRepository voteRepository)
     {
         _voteRepository = voteRepository;
     }
-    
+
     public async Task<VotingResultResponseModel> Handle(VotingResultModel request, CancellationToken cancellationToken)
     {
-        var votes = await _voteRepository.GetVoteModel(request.Code);
+        var votes = await _voteRepository.GetVoteModel(request.Code!);
 
         if (votes == null)
             throw new Exception("Invalid code");
+
+        if (!KeyUtils.Verify(request.Key!, votes.KeyHash!))
+            throw new Exception("Access denied");
 
         var voteResult = new VotingResultResponseModel
         {

@@ -13,12 +13,12 @@ namespace VotingApp.IntegrationTests.Controllers.Vote;
 public class JoinVotingControllerTest
 {
     private readonly VoteFixture _voteFixture;
-    
+
     public JoinVotingControllerTest(VoteFixture voteFixture)
     {
         _voteFixture = voteFixture;
     }
-    
+
     [Fact]
     public async void CreateVoting_200_OK_TryParseGuid()
     {
@@ -26,15 +26,16 @@ public class JoinVotingControllerTest
         {
             Code = _voteFixture.Code
         };
-        
+
         await using var application = new WebServerFactory();
         using var client = application.CreateClient();
         var httpContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
         using var response = await client.PostAsync("/vote/JoinVoting", httpContent);
-        
-        var voterId = JsonConvert.DeserializeObject<JoinVotingResponseModel>(await response.Content.ReadAsStringAsync())!.VoterId;
+
+        var voterId =
+            JsonConvert.DeserializeObject<JoinVotingResponseModel>(await response.Content.ReadAsStringAsync())!.VoterId;
         _voteFixture.VoterId = voterId;
-        
+
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
     }
 }

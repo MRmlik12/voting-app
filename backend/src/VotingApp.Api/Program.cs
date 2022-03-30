@@ -3,8 +3,8 @@ using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Http.Connections;
 using VotingApp.Api.Hubs;
-using VotingApp.Infrastructure;
 using VotingApp.Application;
+using VotingApp.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,7 +15,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory((containerBuild) =>
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory(containerBuild =>
 {
     containerBuild.RegisterModule(new InfrastructureModule());
     containerBuild.RegisterModule(new ApplicationModule());
@@ -25,9 +25,8 @@ builder.Services.AddSignalR(options =>
 {
     options.EnableDetailedErrors = true;
     options.KeepAliveInterval = TimeSpan.FromMinutes(1);
-}).AddJsonProtocol(options => {
-    options.PayloadSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
-});;
+}).AddJsonProtocol(options => { options.PayloadSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase; });
+;
 
 var app = builder.Build();
 
@@ -57,4 +56,6 @@ app.UseEndpoints(endpoints =>
 
 app.Run();
 
-public partial class Program{}
+public partial class Program
+{
+}
