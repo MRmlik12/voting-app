@@ -7,10 +7,12 @@ using VotingApp.Core.Models;
 using VotingApp.Core.Models.Response;
 using VotingApp.IntegrationTests.Fixtures;
 using Xunit;
+using Xunit.Priority;
 
 namespace VotingApp.IntegrationTests.Controllers.Vote;
 
 [Collection("Voting collection")]
+[DefaultPriority(1)]
 public class JoinVotingControllerTest
 {
     private readonly VoteFixture _voteFixture;

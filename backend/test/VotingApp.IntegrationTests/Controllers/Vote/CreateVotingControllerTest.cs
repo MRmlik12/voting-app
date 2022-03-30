@@ -7,10 +7,12 @@ using Newtonsoft.Json;
 using VotingApp.Core.Models;
 using VotingApp.IntegrationTests.Fixtures;
 using Xunit;
+using Xunit.Priority;
 
 namespace VotingApp.IntegrationTests.Controllers.Vote;
 
 [Collection("Voting collection")]
+[DefaultPriority(0)]
 public class CreateVotingControllerTest
 {
     private const int CodeLenght = 10;

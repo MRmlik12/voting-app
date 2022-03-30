@@ -5,15 +5,16 @@ using Newtonsoft.Json;
 using VotingApp.Core.Models;
 using VotingApp.IntegrationTests.Fixtures;
 using Xunit;
+using Xunit.Priority;
 
 namespace VotingApp.IntegrationTests.Controllers.Vote;
 
 [Collection("Voting collection")]
-public class CastVoteControllerTest
+public class VoteCastControllerTest
 {
     private readonly VoteFixture _voteFixture;
     
-    public CastVoteControllerTest(VoteFixture voteFixture)
+    public VoteCastControllerTest(VoteFixture voteFixture)
     {
         _voteFixture = voteFixture;
     }
