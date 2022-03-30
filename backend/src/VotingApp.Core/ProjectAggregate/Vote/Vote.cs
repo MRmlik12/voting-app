@@ -1,6 +1,6 @@
 namespace VotingApp.Core.ProjectAggregate.Vote;
 
-public class VoteModel
+public class Vote
 {
     public string? Title { get; set; }
     public List<VoteItem>? VotingItems { get; set; }

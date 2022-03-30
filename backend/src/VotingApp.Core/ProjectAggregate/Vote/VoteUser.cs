@@ -2,6 +2,6 @@
 
 public class VoteUser
 {
-    public long Id { get; set; }
+    public Guid Id { get; set; }
     public int Vote { get; set; }
 }

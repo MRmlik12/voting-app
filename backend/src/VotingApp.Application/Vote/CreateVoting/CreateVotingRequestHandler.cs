@@ -2,7 +2,7 @@ using MediatR;
 using VotingApp.Core.Models;
 using VotingApp.Core.ProjectAggregate.Vote;
 using VotingApp.Core.Utils;
-using VotingApp.Infrastructure.Redis.Infrastructure;
+using VotingApp.Infrastructure.Redis.Interfaces;
 
 namespace VotingApp.Application.Vote.CreateVoting;
 
@@ -17,14 +17,21 @@ public class CreateVotingRequestHandler : IRequestHandler<CreateVotingModel, str
 
     public async Task<string> Handle(CreateVotingModel request, CancellationToken cancellationToken)
     {
+        if (request.VotingItems == null) throw new Exception("Voting items is null");
+        
         var code = GenerateCodeUtil.Generate();
-        var voteModel = new VoteModel
+        var voteModel = new Core.ProjectAggregate.Vote.Vote
         {
             Title = request.Title,
-            VotingItems = new List<VoteItem>()
+            VotingItems = request.VotingItems.Select(x => new VoteItem
+            {
+                FirstName = x.Key,
+                SecondName = x.Value,
+                Users = new List<VoteUser>()
+            }).ToList()
         };
 
-        await _voteRepository.Create(code, voteModel);
+        await _voteRepository.UpdateOrCreate(code, voteModel);
 
         return code;
     }
