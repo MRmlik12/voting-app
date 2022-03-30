@@ -1,5 +1,8 @@
+using System.Text.Json;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Http.Connections;
+using VotingApp.Api.Hubs;
 using VotingApp.Infrastructure;
 using VotingApp.Application;
 
@@ -18,6 +21,14 @@ builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory((contai
     containerBuild.RegisterModule(new ApplicationModule());
 }));
 
+builder.Services.AddSignalR(options =>
+{
+    options.EnableDetailedErrors = true;
+    options.KeepAliveInterval = TimeSpan.FromMinutes(1);
+}).AddJsonProtocol(options => {
+    options.PayloadSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+});;
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -32,6 +43,16 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapHub<VotingResultHub>("/votingResults", options =>
+    {
+        options.Transports =
+            HttpTransportType.WebSockets |
+            HttpTransportType.LongPolling;
+    });
+});
 
 app.Run();
 
