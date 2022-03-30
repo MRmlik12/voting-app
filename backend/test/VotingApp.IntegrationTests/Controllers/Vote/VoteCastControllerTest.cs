@@ -5,7 +5,6 @@ using Newtonsoft.Json;
 using VotingApp.Core.Models;
 using VotingApp.IntegrationTests.Fixtures;
 using Xunit;
-using Xunit.Priority;
 
 namespace VotingApp.IntegrationTests.Controllers.Vote;
 

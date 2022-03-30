@@ -40,9 +40,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
-
 app.MapControllers();
+
+app.UseRouting();
 
 app.UseEndpoints(endpoints =>
 {
@@ -52,6 +52,7 @@ app.UseEndpoints(endpoints =>
             HttpTransportType.WebSockets |
             HttpTransportType.LongPolling;
     });
+    endpoints.MapControllers();
 });
 
 app.Run();

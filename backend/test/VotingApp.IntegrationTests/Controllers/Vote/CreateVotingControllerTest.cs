@@ -1,18 +1,16 @@
 ﻿using System.Collections.Generic;
-using System.Drawing;
 using System.Net;
 using System.Net.Http;
 using System.Text;
 using Newtonsoft.Json;
 using VotingApp.Core.Models;
+using VotingApp.Core.Models.Response;
 using VotingApp.IntegrationTests.Fixtures;
 using Xunit;
-using Xunit.Priority;
 
 namespace VotingApp.IntegrationTests.Controllers.Vote;
 
 [Collection("Voting collection")]
-[DefaultPriority(0)]
 public class CreateVotingControllerTest
 {
     private const int CodeLenght = 10;
@@ -42,10 +40,10 @@ public class CreateVotingControllerTest
         var httpContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
         using var response = await client.PostAsync("/vote/CreateVoting", httpContent);
         
-        var code = await response.Content.ReadAsStringAsync();
-        _voteFixture.Code = code;
+        var responseModel = JsonConvert.DeserializeObject<CreateVotingResponseModel>(await response.Content.ReadAsStringAsync());
+        _voteFixture.Code = responseModel!.Code;
         
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-        Assert.Equal(CodeLenght, code.Length);
+        Assert.Equal(CodeLenght, responseModel.Code.Length);
     }
 }
