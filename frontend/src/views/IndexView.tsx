@@ -1,7 +1,7 @@
 import React from "react";
 import IndexTitle from "../components/index/IndexTitle";
 import IndexContent from "../components/index/IndexContent";
-import "../Styles/Index.sass"
+import "../Styles/Index.sass";
 
 const IndexView = () => {
   return (
@@ -10,6 +10,6 @@ const IndexView = () => {
       <IndexContent />
     </div>
   );
-}
+};
 
 export default IndexView;

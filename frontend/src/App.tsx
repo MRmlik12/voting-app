@@ -1,5 +1,5 @@
-import React from 'react';
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import React from "react";
+import { Route, Routes } from "react-router-dom";
 import IndexView from "./views/IndexView";
 
 const App = () => {
@@ -10,6 +10,6 @@ const App = () => {
       </Routes>
     </div>
   );
-}
+};
 
 export default App;

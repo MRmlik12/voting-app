@@ -7,7 +7,7 @@ const IndexContent = () => {
       <button>Create Voting</button>
       <button>Join Voting</button>
     </div>
-  )
-}
+  );
+};
 
 export default IndexContent;
