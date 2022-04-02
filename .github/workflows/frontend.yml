@@ -1,0 +1,23 @@
+name: Frontend
+on:
+  push:
+    branches: [ dev ]
+  pull_request:
+    branches: [ dev ]
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install Node.JS
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16.x'
+    - uses: actions/cache@v2
+      with:
+        path: '**/node_modules'
+        key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+    - name: Install packages
+      run: yarn --cwd frontend
+    - name: Lint project
+      run: yarn --cwd frontend lint
