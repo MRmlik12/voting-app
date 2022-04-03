@@ -28,7 +28,7 @@ public class VotingResultRequestHandler : IRequestHandler<VotingResultModel, Vot
         var voteResult = new VotingResultResponseModel
         {
             Code = request.Code,
-            ParticipantsCount = votes.Participants!.Count,
+            ParticipantsCount = votes.Participants?.Count,
             Votes = new List<VoteModels>()
         };
 

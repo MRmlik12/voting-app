@@ -43,6 +43,7 @@ public class CreateVotingControllerTest
         var responseModel =
             JsonConvert.DeserializeObject<CreateVotingResponseModel>(await response.Content.ReadAsStringAsync());
         _voteFixture.Code = responseModel!.Code!;
+        _voteFixture.Key = responseModel.Key!;
 
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         Assert.Equal(CodeLenght, responseModel.Code!.Length);

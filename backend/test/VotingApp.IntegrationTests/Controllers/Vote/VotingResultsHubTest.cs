@@ -25,12 +25,12 @@ public class VotingResultsHubTest
             Key = _voteFixture.Key,
             Code = _voteFixture.Code
         };
+        
         await using var application = new WebServerFactory();
-        var port = application.Server.BaseAddress.Port;
 
         var result = new VotingResultResponseModel();
         var connection = new HubConnectionBuilder()
-            .WithUrl($"ws://localhost:{port}/VotingResult")
+            .WithUrl("ws://localhost/votingResults", o => o.HttpMessageHandlerFactory = _ => application.Server.CreateHandler())
             .Build();
         
         connection.On<VotingResultResponseModel>("OnReceiveMessage", msg =>
@@ -39,7 +39,7 @@ public class VotingResultsHubTest
         });
         
         await connection.StartAsync();
-        await connection.InvokeAsync("Send", message);
+        await connection.InvokeAsync("SendMessage", message);
 
         result.Should().NotBeNull();
     }
