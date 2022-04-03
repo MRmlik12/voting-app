@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "postcss": "^8",
-    "postcss-loader": "^6.2.1",
-    "sass": "^1.49.10"
-  }
-}
