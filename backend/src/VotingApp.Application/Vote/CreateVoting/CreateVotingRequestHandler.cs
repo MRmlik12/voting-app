@@ -25,8 +25,8 @@ public class CreateVotingRequestHandler : IRequestHandler<CreateVotingModel, str
             Title = request.Title,
             VotingItems = request.VotingItems.Select(x => new VoteItem
             {
-                FirstName = x.Key,
-                SecondName = x.Value,
+                FirstName = x.FirstItem,
+                SecondName = x.SecondItem,
                 Users = new List<VoteUser>()
             }).ToList()
         };

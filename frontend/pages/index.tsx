@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
-import IndexContent from "../components/index/IndexContent";
-import IndexLogo from "../components/index/IndexLogo";
+import IndexContent from '../components/index/IndexContent'
+import IndexLogo from '../components/index/IndexLogo'
 
 const Home: NextPage = () => {
   return (
