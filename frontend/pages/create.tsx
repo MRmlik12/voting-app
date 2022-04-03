@@ -1,8 +1,8 @@
-import React from "react";
-import {NextPage} from "next";
-import Head from "next/head";
-import CreateHeader from "../components/create/CreateHeader";
-import CreateForm from "../components/create/CreateForm";
+import React from 'react'
+import { NextPage } from 'next'
+import Head from 'next/head'
+import CreateHeader from '../components/create/CreateHeader'
+import CreateForm from '../components/create/CreateForm'
 
 const Create: NextPage = () => {
   return (
@@ -16,4 +16,4 @@ const Create: NextPage = () => {
   )
 }
 
-export default Create;
+export default Create

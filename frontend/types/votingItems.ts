@@ -1,4 +1,4 @@
 export interface VotingItems {
-  firstItem: string;
-  secondItem: string;
+  firstItem: string
+  secondItem: string
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 const CreateHeader = () => {
   return (
@@ -6,6 +6,6 @@ const CreateHeader = () => {
       <header className="text-7xl font-bold">Create Voting</header>
     </div>
   )
-};
+}
 
-export default CreateHeader;
+export default CreateHeader

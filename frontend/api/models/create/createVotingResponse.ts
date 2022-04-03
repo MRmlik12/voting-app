@@ -1,4 +1,4 @@
 export interface CreateVotingResponse {
-  code: string;
-  key: string;
+  code: string
+  key: string
 }

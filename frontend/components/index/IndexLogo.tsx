@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 const IndexLogo = () => {
   return (
@@ -8,4 +8,4 @@ const IndexLogo = () => {
   )
 }
 
-export default IndexLogo;
+export default IndexLogo
