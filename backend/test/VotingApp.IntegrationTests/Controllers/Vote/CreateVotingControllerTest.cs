@@ -27,11 +27,23 @@ public class CreateVotingControllerTest
         var body = new CreateVotingModel
         {
             Title = "Example",
-            VotingItems = new Dictionary<string, string>
+            VotingItems = new List<VotingItem>
             {
-                { "Milk", "Bread" },
-                { "Apple", "Banana" },
-                { "Cherry", "Mango" }
+                new ()
+                {
+                    FirstItem = "Milk",
+                    SecondItem = "Bread"
+                },
+                new ()
+                { 
+                    FirstItem ="Apple",
+                    SecondItem = "Banana" 
+                },
+               new ()
+               {
+                   FirstItem = "Cherry", 
+                   SecondItem = "Mango"
+               }
             }
         };
 
