@@ -9,7 +9,7 @@ namespace VotingApp.Api.Controllers.Vote;
 public class CastVoteController : ControllerBase
 {
     private readonly IMediator _mediator;
-    
+
     public CastVoteController(IMediator mediator)
     {
         _mediator = mediator;
