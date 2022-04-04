@@ -51,3 +51,20 @@ export const getVoteItem = async (
       itemIndex
     }
   }).catch((err) => err)
+
+export const castVote = async (
+  code: string,
+  voterId: string,
+  itemIndex: number,
+  selectedVote: number
+): Promise<AxiosResponse> =>
+  await baseClient.request({
+    url: "/vote/CastVote",
+    method: "POST",
+    data: {
+      code,
+      voterId,
+      itemIndex,
+      selectedVote
+    }
+  }).catch((err) => err)
