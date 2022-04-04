@@ -26,7 +26,7 @@ public class CreateVotingRequestHandler : IRequestHandler<CreateVotingModel, Cre
         {
             Title = request.Title,
             KeyHash = hash,
-            VotingItems = request.VotingItems.Select(x => new VoteItem
+            VotingItems = request.VotingItems.Select(x => new Core.ProjectAggregate.Vote.VoteItem
             {
                 FirstName = x.FirstItem,
                 SecondName = x.SecondItem,
