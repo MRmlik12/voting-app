@@ -1,5 +1,5 @@
 export interface VoteItem {
-  firstItem: string;
-  secondItem: string;
-  itemsCount: number;
+  firstItem: string
+  secondItem: string
+  itemsCount: number
 }

@@ -1,5 +1,5 @@
-import { ParsedUrlQuery } from "querystring";
+import { ParsedUrlQuery } from 'querystring'
 
 export interface VotingParams extends ParsedUrlQuery {
-  itemIndex?: string;
+  itemIndex?: string
 }

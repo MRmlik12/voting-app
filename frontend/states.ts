@@ -7,10 +7,10 @@ export const voterId = atom({
 
 export const code = atom({
   key: 'code',
-  default: ''
+  default: '',
 })
 
 export const voteIndex = atom({
   key: 'voteIndex',
-  default: 0
+  default: 0,
 })

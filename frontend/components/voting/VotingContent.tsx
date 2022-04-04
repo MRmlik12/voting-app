@@ -1,28 +1,31 @@
-import React from "react";
-import { castVote } from "../../api/api";
-import { useRecoilState, useRecoilValue } from "recoil";
-import { code, voteIndex, voterId } from "../../states";
-import { useRouter } from "next/router";
+import React from 'react'
+import { castVote } from '../../api/api'
+import { useRecoilState, useRecoilValue } from 'recoil'
+import { code, voteIndex, voterId } from '../../states'
+import { useRouter } from 'next/router'
 
 interface VotingContentProps {
-  firstItem: string;
-  secondItem: string;
+  firstItem: string
+  secondItem: string
 }
 
-const VotingContent: React.FC<VotingContentProps> = ({ firstItem, secondItem }) => {
+const VotingContent: React.FC<VotingContentProps> = ({
+  firstItem,
+  secondItem,
+}) => {
   const votingCode = useRecoilValue(code)
   const voter = useRecoilValue(voterId)
-  const [index, setVoteIndex] = useRecoilState(voteIndex);
-  const router = useRouter();
+  const [index, setVoteIndex] = useRecoilState(voteIndex)
+  const router = useRouter()
 
   const handleVoteButton = async (selectedVote: number) => {
-    const response = await castVote(votingCode, voter, index, selectedVote);
+    const response = await castVote(votingCode, voter, index, selectedVote)
 
-    if (response.status !== 200) return;
+    if (response.status !== 200) return
 
-    setVoteIndex(index + 1);
+    setVoteIndex(index + 1)
     await router.push(`/voting?voteIndex=${index}`)
-  };
+  }
 
   return (
     <div className="flex flex-row w-full">
@@ -39,7 +42,7 @@ const VotingContent: React.FC<VotingContentProps> = ({ firstItem, secondItem }) 
         {secondItem}
       </button>
     </div>
-  );
+  )
 }
 
-export default VotingContent;
+export default VotingContent
