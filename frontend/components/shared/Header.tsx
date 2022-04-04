@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react'
 
 interface HeaderProps {
-  title: string;
+  title: string
 }
 
 const Header: React.FC<HeaderProps> = ({ title }) => {
@@ -12,4 +12,4 @@ const Header: React.FC<HeaderProps> = ({ title }) => {
   )
 }
 
-export default Header;
+export default Header

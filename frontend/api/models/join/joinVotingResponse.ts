@@ -1,3 +1,3 @@
 export interface JoinVotingResponse {
-  voterId: string;
+  voterId: string
 }

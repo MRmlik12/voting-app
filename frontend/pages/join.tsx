@@ -1,11 +1,11 @@
-import React from "react";
-import { NextPage } from "next";
-import Head from "next/head";
-import Header from "../components/shared/Header";
-import JoinForm from "../components/join/JoinForm";
+import React from 'react'
+import { NextPage } from 'next'
+import Head from 'next/head'
+import Header from '../components/shared/Header'
+import JoinForm from '../components/join/JoinForm'
 
 const Join: NextPage = () => {
-  const title = "Join Voting";
+  const title = 'Join Voting'
 
   return (
     <div>
@@ -18,4 +18,4 @@ const Join: NextPage = () => {
   )
 }
 
-export default Join;
+export default Join

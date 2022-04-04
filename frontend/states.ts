@@ -1,6 +1,6 @@
-import { atom } from "recoil";
+import { atom } from 'recoil'
 
 export const voterId = atom({
-  key: "voterId",
-  default: ""
+  key: 'voterId',
+  default: '',
 })

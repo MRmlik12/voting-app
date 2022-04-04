@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios'
 import { CreateVotingResponse } from './models/create/createVotingResponse'
 import { VotingItems } from '../types/votingItems'
-import {JoinVotingResponse} from "./models/join/joinVotingResponse";
+import { JoinVotingResponse } from './models/join/joinVotingResponse'
 
 const baseClient = axios.create({
   baseURL:
@@ -28,11 +28,12 @@ export const createVoting = async (
 export const joinVoting = async (
   code: string
 ): Promise<AxiosResponse<JoinVotingResponse>> =>
-  await baseClient.request<JoinVotingResponse>({
-    url: '/vote/JoinVoting',
-    method: 'POST',
-    data: {
-      code
-    }
-  })
+  await baseClient
+    .request<JoinVotingResponse>({
+      url: '/vote/JoinVoting',
+      method: 'POST',
+      data: {
+        code,
+      },
+    })
     .catch((err) => err)

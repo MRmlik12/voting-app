@@ -2,7 +2,7 @@ import React from 'react'
 import { NextPage } from 'next'
 import Head from 'next/head'
 import CreateForm from '../components/create/CreateForm'
-import Header from "../components/shared/Header";
+import Header from '../components/shared/Header'
 
 const Create: NextPage = () => {
   return (
