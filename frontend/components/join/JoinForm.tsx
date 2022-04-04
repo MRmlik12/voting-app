@@ -1,22 +1,24 @@
 import React, { useState } from 'react'
 import { joinVoting } from '../../api/api'
 import { useSetRecoilState } from 'recoil'
-import { voterId } from '../../states'
+import { code, voterId } from '../../states'
 import { useRouter } from 'next/router'
 
 const JoinForm = () => {
-  const [code, setCode] = useState('')
+  const [votingCode, setVotingCode] = useState('')
   const setVoterId = useSetRecoilState(voterId)
+  const setGlobalCode = useSetRecoilState(code)
   const router = useRouter()
 
   const handleJoinButton = async () => {
-    const response = await joinVoting(code)
+    const response = await joinVoting(votingCode)
 
     if (response.status !== 200) return
 
     setVoterId(response.data.voterId)
+    setGlobalCode(votingCode)
 
-    await router.push('/voting')
+    await router.push('/voting?itemIndex=0')
   }
 
   return (
@@ -24,7 +26,7 @@ const JoinForm = () => {
       <input
         className="bg-blue-400 text-4xl w-full"
         placeholder="code"
-        onChange={(e) => setCode(e.target.value)}
+        onChange={(e) => setVotingCode(e.target.value)}
       />
       <button
         className="bg-amber-400 text-4xl w-full"
