@@ -7,13 +7,17 @@ import {getVoteItem} from "../api/api";
 import {useRecoilValue} from "recoil";
 import {code, voteIndex} from '../states';
 import VotingCounter from "../components/voting/VotingCounter";
+import { useRouter } from "next/router";
 
 const Voting: NextPage = () => {
   const [voteItem, setVoteItem] = useState<VoteItem | null>(null);
   const key = useRecoilValue(code)
   const itemIndex = useRecoilValue(voteIndex);
+  const router = useRouter();
 
   const onStartup = async () => {
+    if (itemIndex === voteItem?.itemsCount)
+      await router.push("/complete")
     const response = await getVoteItem(key, itemIndex)
 
     if (response.status !== 200) return;
@@ -22,6 +26,8 @@ const Voting: NextPage = () => {
   }
 
   useEffect(() => {
+    if (itemIndex === voteItem?.itemsCount)
+      router.push("/complete")
     (async () => await onStartup())()
   }, [itemIndex]);
 
@@ -32,7 +38,7 @@ const Voting: NextPage = () => {
       </Head>
       {voteItem ? (
         <>
-          <VotingCounter counter={itemIndex} max={10} />
+          <VotingCounter counter={itemIndex} max={voteItem.itemsCount} />
           <VotingContent firstItem={voteItem.firstItem} secondItem={voteItem.secondItem} />
         </>
       ) : null}
