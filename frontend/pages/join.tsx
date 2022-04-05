@@ -8,7 +8,7 @@ const Join: NextPage = () => {
   const title = 'Join Voting'
 
   return (
-    <div>
+    <div className="flex flex-col items-center">
       <Head>
         <title>Join Voting</title>
       </Head>

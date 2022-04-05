@@ -3,6 +3,8 @@ import { VotingItems } from '../../types/votingItems'
 import { createVoting } from '../../api/api'
 import { VOTING_CREDENTIALS_KEY } from '../../misc/constrants'
 import { useRouter } from 'next/router'
+import TextInput from "../shared/TextInput";
+import Button from "../shared/Button";
 
 const CreateForm = () => {
   const [title, setTitle] = useState('')
@@ -29,8 +31,7 @@ const CreateForm = () => {
 
   return (
     <div className="flex flex-col m-20">
-      <input
-        className="bg-blue-400"
+      <TextInput
         placeholder="Title"
         onChange={(e) => setTitle(e.target.value)}
       />
@@ -38,24 +39,21 @@ const CreateForm = () => {
         {voteItems.map((item, index) => {
           return (
             <div key={index} className="flex flex-row m-5">
-              <input
-                className="bg-amber-300 mr-5"
+              <TextInput
+                placeholder="First item"
                 onChange={(e) => (item.firstItem = e.target.value)}
               />
-              <input
-                className="bg-amber-300"
+              <div className="m-1"></div>
+              <TextInput
+                placeholder="Second item"
                 onChange={(e) => (item.secondItem = e.target.value)}
               />
             </div>
           )
         })}
       </div>
-      <button className="bg-green-400" onClick={handleAddButton}>
-        Add
-      </button>
-      <button className="bg-gray-500 mt-5" onClick={handleCreateButton}>
-        Create
-      </button>
+      <Button name="Add" backgroundColor="#74994b" onClick={handleAddButton} />
+      <Button name="Create" onClick={handleCreateButton} />
     </div>
   )
 }

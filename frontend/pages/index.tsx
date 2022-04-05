@@ -4,7 +4,7 @@ import IndexLogo from '../components/index/IndexLogo'
 
 const Home: NextPage = () => {
   return (
-    <div className="container">
+    <div className="flex flex-col items-center">
       <IndexLogo />
       <IndexContent />
     </div>

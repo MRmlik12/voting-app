@@ -6,7 +6,7 @@ import Header from '../components/shared/Header'
 
 const Create: NextPage = () => {
   return (
-    <div>
+    <div className="flex flex-col items-center">
       <Head>
         <title>Create Voting</title>
       </Head>
