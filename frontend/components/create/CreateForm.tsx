@@ -1,21 +1,21 @@
 import React, { useState } from 'react'
 import { VotingItems } from '../../types/votingItems'
 import { createVoting } from '../../api/api'
+import { VOTING_CREDENTIALS_KEY } from '../../misc/constrants'
 import { useRouter } from 'next/router'
 
 const CreateForm = () => {
   const [title, setTitle] = useState('')
   const [voteItems, setVoteItems] = useState<VotingItems[]>([])
+  const router = useRouter()
 
   const handleCreateButton = async () => {
     const response = await createVoting(title, voteItems)
 
     if (response.status !== 200) return
 
-    localStorage.setItem(
-      'VOTING_RESULT_CREDENTIALS',
-      JSON.stringify(response.data)
-    )
+    localStorage.setItem(VOTING_CREDENTIALS_KEY, JSON.stringify(response.data))
+    await router.push('/result')
   }
 
   const handleAddButton = () => {

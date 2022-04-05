@@ -25,8 +25,7 @@ const Voting: NextPage = () => {
   }
 
   useEffect(() => {
-    if (itemIndex === voteItem?.itemsCount)
-      router.push('/complete')(async () => await onStartup())()
+    ;(async () => await onStartup())()
   }, [itemIndex])
 
   return (

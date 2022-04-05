@@ -34,7 +34,7 @@ public class VotingResultRequestHandler : IRequestHandler<VotingResultModel, Vot
 
         voteResult.Votes = votes.VotingItems?.Select(x => new VoteModels
         {
-            FistVote = new VoteDetail
+            FirstVote = new VoteDetail
             {
                 Name = x.FirstName!,
                 Count = x.Users?.Where(x => x.Vote == 0).Count()
