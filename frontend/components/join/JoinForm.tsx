@@ -3,6 +3,8 @@ import { joinVoting } from '../../api/api'
 import { useSetRecoilState } from 'recoil'
 import { code, voterId } from '../../states'
 import { useRouter } from 'next/router'
+import TextInput from "../shared/TextInput";
+import Button from "../shared/Button";
 
 const JoinForm = () => {
   const [votingCode, setVotingCode] = useState('')
@@ -22,18 +24,15 @@ const JoinForm = () => {
   }
 
   return (
-    <div className="flex flex-col m-20">
-      <input
-        className="bg-blue-400 text-4xl w-full"
+    <div className="flex flex-col m-20 desktop:w-1/4 mobile:w-1/2">
+      <TextInput
         placeholder="code"
         onChange={(e) => setVotingCode(e.target.value)}
       />
-      <button
-        className="bg-amber-400 text-4xl w-full"
+      <Button
+        name="Join"
         onClick={handleJoinButton}
-      >
-        Join
-      </button>
+      />
     </div>
   )
 }

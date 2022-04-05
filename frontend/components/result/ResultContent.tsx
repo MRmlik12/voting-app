@@ -27,6 +27,7 @@ const ResultContent = () => {
       setVotingData(msg)
     })
 
+    await refreshVotingData();
     setInterval(refreshVotingData, 10000)
   }
 
@@ -49,7 +50,7 @@ const ResultContent = () => {
 
   return (
     <div className="flex flex-col items-center m-10">
-      <header className="text-6xl font-bold">{votingData?.code}</header>
+      <header className="text-6xl font-bold font-fira-sans">{votingData?.code}</header>
       <header className="text-4xl font-bold m-5">
         {votingData?.participantsCount}
       </header>
@@ -66,10 +67,10 @@ const ResultContent = () => {
             return (
               <div key={index} className="flex flex-col items-start w-1/2 p-2">
                 <div className="flex flex-row w-full justify-between">
-                  <label>
+                  <label className="text-2xl">
                     {Math.round(firstItemWidth)}% - {item.firstVote.name}
                   </label>
-                  <label>
+                  <label className="text-2xl">
                     {Math.round(secondItemWidth)}% - {item.secondVote.name}
                   </label>
                 </div>

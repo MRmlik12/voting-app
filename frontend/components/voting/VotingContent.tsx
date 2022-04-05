@@ -28,18 +28,18 @@ const VotingContent: React.FC<VotingContentProps> = ({
   }
 
   return (
-    <div className="flex flex-row w-full">
+    <div className="flex desktop:flex-row mobile:flex-col h-screen mobile:w-screen">
       <button
-        className="w-1/2 bg-amber-400 h-screen"
+        className="desktop:w-1/2 mobile:h-1/2 bg-amber-400"
         onClick={() => handleVoteButton(0)}
       >
-        {firstItem}
+        <label className="text-4xl font-bold">{firstItem}</label>
       </button>
       <button
-        className="w-1/2 bg-green-400 h-screen"
+        className="desktop:w-1/2 mobile:h-1/2 desktop:h-screen mobile:w-screen bg-green-400"
         onClick={() => handleVoteButton(1)}
       >
-        {secondItem}
+        <label className="text-4xl font-bold">{secondItem}</label>
       </button>
     </div>
   )

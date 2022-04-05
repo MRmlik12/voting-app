@@ -1,23 +1,20 @@
 import React from 'react'
 import { useRouter } from 'next/router'
+import Button from "../shared/Button";
 
 const IndexContent = () => {
   const router = useRouter()
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <button
-        className="border-4 border-blue-700 bg-blue-700 p-5 m-10 rounded-2xl text-4xl w-full"
+      <Button
+        name="Create Voting"
         onClick={() => router.push('/create')}
-      >
-        Create Voting
-      </button>
-      <button
-        className="border-4 border-blue-700 bg-blue-700 p-5 m-10 rounded-2xl text-4xl w-full"
+      />
+      <Button
+        name="Join Voting"
         onClick={() => router.push('/join')}
-      >
-        Join Voting
-      </button>
+      />
     </div>
   )
 }
