@@ -60,7 +60,8 @@ app.UseEndpoints(endpoints =>
     endpoints.MapHub<VotingResultHub>("/hub/votingResults", options =>
     {
         options.Transports =
-            HttpTransportType.WebSockets;
+            HttpTransportType.WebSockets |
+            HttpTransportType.LongPolling;
     });
     endpoints.MapControllers();
 });
