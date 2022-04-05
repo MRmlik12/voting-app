@@ -30,7 +30,7 @@ public class VotingResultsHubTest
 
         var result = new VotingResultResponseModel();
         var connection = new HubConnectionBuilder()
-            .WithUrl("ws://localhost/votingResults", o => o.HttpMessageHandlerFactory = _ => application.Server.CreateHandler())
+            .WithUrl("ws://localhost/hub/votingResults", o => o.HttpMessageHandlerFactory = _ => application.Server.CreateHandler())
             .Build();
         
         connection.On<VotingResultResponseModel>("OnReceiveMessage", msg =>
