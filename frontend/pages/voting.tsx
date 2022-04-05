@@ -25,7 +25,7 @@ const Voting: NextPage = () => {
   }
 
   useEffect(() => {
-    (async () => await onStartup())()
+    ;(async () => await onStartup())()
   }, [itemIndex])
 
   return (

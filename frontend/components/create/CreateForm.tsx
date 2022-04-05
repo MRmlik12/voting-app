@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { VotingItems } from '../../types/votingItems'
 import { createVoting } from '../../api/api'
-import { VOTING_CREDENTIALS_KEY } from "../../misc/constrants";
-import { useRouter } from "next/router";
+import { VOTING_CREDENTIALS_KEY } from '../../misc/constrants'
+import { useRouter } from 'next/router'
 
 const CreateForm = () => {
   const [title, setTitle] = useState('')
@@ -14,11 +14,8 @@ const CreateForm = () => {
 
     if (response.status !== 200) return
 
-    localStorage.setItem(
-      VOTING_CREDENTIALS_KEY,
-      JSON.stringify(response.data)
-    )
-    await router.push("/result")
+    localStorage.setItem(VOTING_CREDENTIALS_KEY, JSON.stringify(response.data))
+    await router.push('/result')
   }
 
   const handleAddButton = () => {

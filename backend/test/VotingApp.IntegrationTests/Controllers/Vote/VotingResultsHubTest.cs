@@ -33,7 +33,6 @@ public class VotingResultsHubTest
         var connection = new HubConnectionBuilder()
             .WithUrl("ws://localhost:80/hub/votingResults", o =>
             {
-                o.Transports = HttpTransportType.WebSockets;
                 o.HttpMessageHandlerFactory = _ => application.Server.CreateHandler();
             })
             .Build();

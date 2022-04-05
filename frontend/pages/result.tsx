@@ -1,7 +1,7 @@
-import React from "react";
-import { NextPage } from "next";
-import Head from "next/head";
-import ResultContent from "../components/result/ResultContent";
+import React from 'react'
+import { NextPage } from 'next'
+import Head from 'next/head'
+import ResultContent from '../components/result/ResultContent'
 
 const Result: NextPage = () => {
   return (
@@ -11,7 +11,7 @@ const Result: NextPage = () => {
       </Head>
       <ResultContent />
     </div>
-  );
+  )
 }
 
-export default Result;
+export default Result

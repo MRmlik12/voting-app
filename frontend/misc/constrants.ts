@@ -1,1 +1,1 @@
-export const VOTING_CREDENTIALS_KEY = "votingCredentials";
+export const VOTING_CREDENTIALS_KEY = 'votingCredentials'
