@@ -9,7 +9,7 @@ public class VotingResultResponseModel
 
 public class VoteModels
 {
-    public VoteDetail? FistVote { get; set; }
+    public VoteDetail? FirstVote { get; set; }
     public VoteDetail? SecondVote { get; set; }
 }
 

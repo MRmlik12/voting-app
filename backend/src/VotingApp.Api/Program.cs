@@ -15,7 +15,15 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDefaultCorsPolicy();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CORS", corsPolicyBuilder =>
+    {
+        corsPolicyBuilder.AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowAnyOrigin();
+    });
+});
 
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory(containerBuild =>
 {
@@ -49,11 +57,10 @@ app.UseRouting();
 
 app.UseEndpoints(endpoints =>
 {
-    endpoints.MapHub<VotingResultHub>("/votingResults", options =>
+    endpoints.MapHub<VotingResultHub>("/hub/votingResults", options =>
     {
         options.Transports =
-            HttpTransportType.WebSockets |
-            HttpTransportType.LongPolling;
+            HttpTransportType.WebSockets;
     });
     endpoints.MapControllers();
 });
