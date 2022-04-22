@@ -1,0 +1,16 @@
+version: '3.9'
+services:
+  backend:
+    build: ./backend
+    ports:
+      - 6062:80
+  frontend:
+    build: ./frontend
+    environment:
+      - API_URL=http://localhost:6062
+    ports:
+      - 80:3000
+  redis:
+    image: redis:6.2.6-alpine
+    ports:
+      - 6379:6379

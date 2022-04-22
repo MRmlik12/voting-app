@@ -19,12 +19,12 @@ public class VoteItemRequestHandler : IRequestHandler<VoteItemModel, VotingItemD
         if (request.Code == null)
             throw new Exception("Code is null");
 
-        var vote = await _voteRepository.GetVoteModel(request.Code);
+        var voting = await _voteRepository.GetVoteModel(request.Code);
         var votingItem = new VotingItemDto
         {
-            FirstItem = vote?.VotingItems?[request.ItemIndex].FirstName,
-            SecondItem = vote?.VotingItems?[request.ItemIndex].SecondName,
-            ItemsCount = vote?.VotingItems?.Count
+            FirstItem = voting?.VotingItems?[request.ItemIndex].FirstName,
+            SecondItem = voting?.VotingItems?[request.ItemIndex].SecondName,
+            ItemsCount = voting?.VotingItems?.Count
         };
 
         return votingItem;
