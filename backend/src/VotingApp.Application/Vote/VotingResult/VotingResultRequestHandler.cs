@@ -17,22 +17,22 @@ public class VotingResultRequestHandler : IRequestHandler<VotingResultModel, Vot
 
     public async Task<VotingResultResponseModel> Handle(VotingResultModel request, CancellationToken cancellationToken)
     {
-        var votes = await _voteRepository.GetVoteModel(request.Code!);
+        var voting = await _voteRepository.GetVoteModel(request.Code!);
 
-        if (votes == null)
+        if (voting == null)
             throw new Exception("Invalid code");
 
-        if (!KeyUtils.Verify(request.Key!, votes.KeyHash!))
+        if (!KeyUtils.Verify(request.Key!, voting.KeyHash!))
             throw new Exception("Access denied");
 
         var voteResult = new VotingResultResponseModel
         {
             Code = request.Code,
-            ParticipantsCount = votes.Participants?.Count,
+            ParticipantsCount = voting.Participants?.Count,
             Votes = new List<VoteModels>()
         };
 
-        voteResult.Votes = votes.VotingItems?.Select(x => new VoteModels
+        voteResult.Votes = voting.VotingItems?.Select(x => new VoteModels
         {
             FirstVote = new VoteDetail
             {

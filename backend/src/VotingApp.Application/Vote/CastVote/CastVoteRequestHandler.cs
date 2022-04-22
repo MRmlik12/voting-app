@@ -16,8 +16,8 @@ public class CastVoteRequestHandler : IRequestHandler<VoteModel>
 
     public async Task<Unit> Handle(VoteModel request, CancellationToken cancellationToken)
     {
-        var vote = await _voteRepository.GetVoteModel(request.Code!);
-        if (vote == null)
+        var voting = await _voteRepository.GetVoteModel(request.Code!);
+        if (voting == null)
             throw new Exception("Vote is null");
 
         var user = new VoteUser
@@ -26,8 +26,8 @@ public class CastVoteRequestHandler : IRequestHandler<VoteModel>
             Vote = request.SelectedVote
         };
 
-        vote.VotingItems?[request.ItemIndex].Users?.Add(user);
-        await _voteRepository.UpdateOrCreate(request.Code!, vote);
+        voting.VotingItems?[request.ItemIndex].Users?.Add(user);
+        await _voteRepository.UpdateOrCreate(request.Code!, voting);
 
         return Unit.Value;
     }

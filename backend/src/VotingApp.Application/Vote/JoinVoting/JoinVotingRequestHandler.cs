@@ -19,12 +19,12 @@ public class JoinVotingRequestHandler : IRequestHandler<JoinVotingModel, JoinVot
         if (request.Code == null)
             throw new Exception("Code property is null");
 
-        var vote = await _voteRepository.GetVoteModel(request.Code);
-        if (vote == null)
+        var voting = await _voteRepository.GetVoteModel(request.Code);
+        if (voting == null)
             throw new Exception("Invalid code");
 
         var id = Guid.NewGuid();
-        vote.Participants?.Add(id);
+        voting.Participants?.Add(id);
 
         var voterResponseModel = new JoinVotingResponseModel
         {
